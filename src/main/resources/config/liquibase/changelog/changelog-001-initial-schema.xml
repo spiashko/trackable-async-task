@@ -4,6 +4,30 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+    <changeSet author="siarhei.piashko" id="changelog-000-trackable_task">
+        <!--postgres sql highlight-->
+        <sql>
+            create table trackable_task
+            (
+                id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+
+                created_at  TIMESTAMP NOT NULL,
+                updated_at  TIMESTAMP NOT NULL,
+
+                executions  JSONB,
+                params      JSONB     NOT NULL,
+                planned_on  TIMESTAMP NOT NULL,
+                retry_count INTEGER   not null,
+                status      TEXT      not null,
+                type        TEXT      NOT NULL
+            );
+        </sql>
+        <rollback>
+            drop table trackable_task;
+        </rollback>
+    </changeSet>
+
+
     <changeSet author="siarhei.piashko" id="changelog-001-person">
         <!--postgres sql highlight-->
         <sql>

@@ -12,13 +12,13 @@ spring:
     open-in-view: false
     properties:
       #
-      #      javax.persistence.schema-generation.create-source: metadata
-      #      javax.persistence.schema-generation.scripts.action: create
-      #      javax.persistence.schema-generation.scripts.create-target: create.sql
+      javax.persistence.schema-generation.create-source: metadata
+      javax.persistence.schema-generation.scripts.action: create
+      javax.persistence.schema-generation.scripts.create-target: create.sql
       #
       #      hibernate.generate_statistics: true
       #      hibernate.format_sql: true
-      hibernate.ddl-auto: validate
+      hibernate.ddl-auto: none
       hibernate.connection.provider_disables_autocommit: true
       hibernate.temp.use_jdbc_metadata_defaults: false # to avoid `Method org.postgresql.jdbc.PgConnection.createClob() is not yet implemented.`
       hibernate.dialect: org.hibernate.dialect.PostgreSQL9Dialect
