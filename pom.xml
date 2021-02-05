@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.spiashko</groupId>
-    <artifactId>rfetch-example</artifactId>
+    <artifactId>transactional-listener-experiments</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>rfetch-example</name>
+    <name>transactional-listener-experiments</name>
     <description>Demo project for RFetch with Spring Boot</description>
 
     <properties>
