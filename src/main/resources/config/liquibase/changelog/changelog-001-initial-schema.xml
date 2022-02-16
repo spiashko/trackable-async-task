@@ -5,14 +5,10 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet author="siarhei.piashko" id="changelog-000-trackable_task">
-        <!--postgres sql highlight-->
         <sql>
             create table trackable_task
             (
                 id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-
-                created_at  TIMESTAMP NOT NULL,
-                updated_at  TIMESTAMP NOT NULL,
 
                 executions  JSONB,
                 params      JSONB     NOT NULL,
@@ -29,42 +25,17 @@
 
 
     <changeSet author="siarhei.piashko" id="changelog-001-person">
-        <!--postgres sql highlight-->
         <sql>
             create table person
             (
-                id         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+                id    UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
 
-                created_at TIMESTAMP   NOT NULL,
-                updated_at TIMESTAMP   NOT NULL,
-
-                name       TEXT UNIQUE NOT NULL
+                name  TEXT UNIQUE NOT NULL,
+                email TEXT UNIQUE NOT NULL
             );
         </sql>
         <rollback>
             drop table person;
-        </rollback>
-    </changeSet>
-
-    <changeSet author="siarhei.piashko" id="changelog-001-cat">
-        <!--postgres sql highlight-->
-        <sql>
-            create table cat
-            (
-                id         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-
-                created_at TIMESTAMP                   NOT NULL,
-                updated_at TIMESTAMP                   NOT NULL,
-
-                name       TEXT UNIQUE                 NOT NULL,
-                dob        DATE                        NOT NULL,
-
-                fk_owner   UUID REFERENCES person (id) NOT NULL,
-                fk_parent  UUID REFERENCES cat (id)
-            );
-        </sql>
-        <rollback>
-            drop table cat;
         </rollback>
     </changeSet>
 
